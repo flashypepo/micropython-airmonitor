@@ -1,5 +1,5 @@
 """
-main setup for Environment Monitor
+main setup for Air Monitor
 
 Configuration:
 Lolin ESP32-S3 mini with sensors:
@@ -20,46 +20,14 @@ https://www.wemos.cc/en/latest/tutorials/others/lolin_shield_i2c_address_table.h
 
 2023-0921 PP first setup
 """
-import micropython
-micropython.alloc_emergency_exception_buf(100)
-
 import machine
 import gc
 
-# 2023-0921 print I2C devices
-#def print_i2cdevices(i2c):
-#    print(f"I2C devices: {[hex(device) for device in i2c.scan()]}")
-
-# test I2C
-#i2c = machine.I2C(0)
-#print_i2cdevices(i2c)
-
-# demo SGP30 sensor
+# 2023-0922 PP first setup Air Monitor
 try:
-    print("Demo SGP30 (air quality) shield...")
-    import sgp30_adafruit_simpletest
-    #import sgp30_test_safuya
+    import air_monitor
 except KeyboardInterrupt:
     print("Done")
-    
-# demo BH1750 sensor
-try:
-    print("Demo BH1750 ambient light shield...")
-    import bh1750_test_octaprog7
-    #import bh1750_test_pinkink
-except KeyboardInterrupt:
-    print("Done")
-
-# demo dps310 sensor
-try:
-    print("Demo HP303B barometric Pressure shield...")
-    import dps310_adafruit_advanced
-    #import dps310_test_jposada202020
-except KeyboardInterrupt:
-    print("Done")
-
-# demo TFT display
-#TODO TFT ILI7341 demo
 
 # cleanup
 gc.collect()
